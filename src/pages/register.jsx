@@ -1,12 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import React, { useState } from 'react';
-
-useEffect(async () => {
-  const response = await axios.get(`https://repechaje-backend.herokuapp.com/posts/${userId}`);
-  setPosts(response.data);
-}, []);
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +20,7 @@ const Register = () => {
   return (
     <div>
       <h1>Registro</h1>
-      <div className="login" aria-required>
+      <div className="login">
         <form onSubmit={handleSubmit}>
           <label>
             email
@@ -48,6 +42,5 @@ const Register = () => {
     </div>
   );
 };
-console.log(username)
 
 export default Register;

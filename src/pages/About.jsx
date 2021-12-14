@@ -2,9 +2,9 @@ import React from 'react';
 
 const About = () => (
   <div>
-    <h1>About</h1>
+    <h1>Bienvenido!</h1>
     <p>
-      This is the about page.
+      Elige en el panel superior la opción deseada
     </p>
   </div>
 );
