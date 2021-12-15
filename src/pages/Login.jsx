@@ -2,25 +2,29 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post('http://localhost:5000/api/auth/login', {
-        username,
-        password,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    const User = { password, email };
+    axios.post('https://repechaje-backend.herokuapp.com/auth', User).then((res) => {
+      console.log(res);
+      // eslint-disable-next-line no-undef
+      localStorage.setItem('User', JSON.stringify(res.data));
+    });
   };
   return (
     <div className="login">
       <form onSubmit={handleSubmit}>
-        <input type="text" id="email" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="text" id="email" value={email} placeholder="email" onChange={(e) => setEmail(e.target.value)} />
+        <input
+          type="password"
+          id="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Login</button>
       </form>
     </div>
